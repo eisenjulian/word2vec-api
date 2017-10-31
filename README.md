@@ -1,22 +1,12 @@
-word2vec-api
+Dockerized Word2vec API
 ============
 
-Simple web service providing a word embedding API. The methods are based on Gensim Word2Vec implementation. Models are passed as parameters and must be in the Word2Vec text or binary format.
-* Install Dependencies   
-```
-pip2 install -r requirements.txt
-```
+Simple web service providing a word embedding API. The methods are based on Gensim Word2Vec implementation. Models are downloaded from [FastText](https://github.com/facebookresearch/fastText)
 
-* Launching the service
 ```
-python word2vec-api --model path/to/the/model [--host host --port 1234]
+$ docker build -t word2vec .
+$ docker run -d -p 5000:5000 word2vec
 ```
-or   
-```
-python word2vec-api.py --model /path/to/GoogleNews-vectors-negative300.bin --binary BINARY --path /word2vec --host 0.0.0.0 --port 5000
-```
-
-
 
 * Example calls
 ```
@@ -29,7 +19,7 @@ curl http://127.0.0.1:5000/word2vec/model_word_set
 
 Note: The "model" method returns a base64 encoding of the vector. "model\_word\_set" returns a base64 encoded pickle of the model's vocabulary. 
 
-## Where to get a pretrained model
+## Where to get more pretrained models
 
 In case you do not have domain specific data to train, it can be convenient to use a pretrained model. 
 Please feel free to submit additions to this list through a pull request.
